@@ -1,0 +1,157 @@
+% !TeX root = 统计物理.tex
+
+\section{非理想气体}
+\subsection{引入-非理想气体的一阶修正}
+
+  非理想气体的能量可以写成形式:
+  \begin{equation}
+    E(p,q)=\sum_{a=1}^{N} \dfrac{p_a^{2}}{2m}+U
+  \end{equation}
+  其配分函数可以分解为对原子动量的积分和对原子坐标的积分的乘积.后者具有形式
+  \[\int \cdots \int e^{-U / T}\mathrm{d} V_1 \mathrm{d} V_2 \cdots \mathrm{d} V_n\]
+  则计算自由能时,会得到:
+  \begin{equation}
+    F=F_{id}-T\ln \frac{1}{V^{n}}\int\cdots \int e^{-U / T}\mathrm{d} V_1 \cdots \mathrm{d}  V_n
+  \end{equation}
+  式中$F_{id}$是理想气体的自由能.
+
+  在被积式中加一再减一,把公式改写成形式:
+  \begin{equation}
+    F=F_{id}-T\ln\left\{ \frac{1}{V^{n}} \int \cdots \int (e^{-U / T}-1)\mathrm{d} V_1 \cdots\mathrm{d} V_n +1 \right\} 
+  \end{equation}
+  为了进一步计算,利用下面的方法.假设:气体不仅足够稀薄,而且量也足够小,以至于可以认为再气体中不会有一对以上的原子同时发生碰撞.事实上,这样的假设并不会影响到所得公式的普遍性,因为自由能的可加性可知它应该具有形式$F=N f\left( T,\dfrac{V}{N} \right) $ , 所以对少量气体所推导出来的公式应该也自动地适用于任何量的气体.
+
+  两个原子只有当彼此靠得很近时,它们的相互作用势能才显著不为零.根据上面的假设,不会有一对以上的原子同时满足这个条件,并且从$N$个原子中挑出两个有$N(N-1)/2$种方法.于是,这个积分可以写成
+  \[\dfrac{N(N-1)}{2}\int \cdots \int (e^{-\frac{U_{12}}{T}}-1)\mathrm{d} V_1 \cdots\mathrm{d} V_n\]
+  由于$U_{12}$是两个原子的自由能,因而只依赖于两个原子的坐标.因而可以对其他原子坐标进行积分,这将给出$V^{n-2}$.此外,当然也可以用$N^{2}$代替$N(N-1)$,把这些代入之前的积分,并利用$\ln(1-x)\approx -x$, 得到
+  \begin{equation}
+    F=F_{id}-\dfrac{TN^{2}}{2V^{2}} \iint (e^{-U_{12} / T}-1)\mathrm{d} V_1 \mathrm{d} V_2
+  \end{equation}
+  而$U_{12}$只是两个原子之间相对坐标的函数,如果引入它们的质心坐标和相对坐标来代替每个原子的坐标,那么还可以对质心坐标进行积分,这样可以在积出一个$V$,因此最后得到:
+  \begin{equation}
+    F=F_{id}+\dfrac{N^{2}TB(T)}{V}
+  \end{equation}
+  
+  式中 
+  \begin{equation}
+    B(T)=\frac{1}{2}\int(1-e^{-U_{12} / T})\mathrm{d} V \label{eq:5.6}
+  \end{equation}
+  由此可以求出压强$~P=-\dfrac{\partial F}{\partial V}$:
+  \begin{equation}
+    P=\dfrac{NT}{V}\left( 1+\dfrac{NB(T)}{V} \right) 
+  \end{equation}
+  根据小增量定理,可以把非理想性的偏移直接从自由能转移到吉布斯自由能$\Phi$上,得到 
+  \[\Phi=\Phi_{id}+NBP\]
+  这样得到用压强来表示体积的公式:
+  \begin{equation}
+    V=\dfrac{NT}{P}+NB 
+  \end{equation}
+
+  以上讨论针对的是单原子气体,而推广到多原子气体是简单的.差别仅仅在于势能的积分项要考虑相对位形.
+
+  明显,得到的全部公式都需要积分$B$是收敛的.为此,在任何情形下分子间的相互作用力必须随距离增加而足够快速的减小:在大距离下$U_{12}$应该比$1 / r^{3}$减小得更快.如果这个条件不被满足,则由全同粒子所构成的气体根本不可能作为均匀物体存在,在这种情形下,物质的每一部分将受到来自很远部分的力.这就导致边缘附近的气体和内部很深的气体的条件将大不相同.
+
+  现在考察在高温和低温两种情形下$B(T)$的符号.在高温($T\gg U_0$)下,在$r>2r_{0}$的整个区域内都有$\frac{\left\vert U_{12} \right\vert}{T}\ll 1$, 因而被积式接近于零. 因此积分值主要取决于$r<2r_0$的区域,在这个区域内$\frac{U_{12}}{T}$是正的而且很大;所以,在这个区域内被积式是正值, 因此在高温下$B(T)$是正的.
+
+  相反,在低温($T\ll U_0$)时,积分中主要起作用的是$r>2r_0$的区域,这时$ \frac{U_{12}}{T}$是负的且绝对值很大,于是在足够低的温度下$B(T)$是负的.高温下$B$是正的而低温下$B$是负的, 那么一定在某一个温度下,$B(T_B)=0$,这一温度$T_B$被称为玻意尔点.
+
+\subsection{集团展开}
+  我们寻求对一个气体的维里展开:
+  \begin{equation}
+    P=nT\left[ 1+B_2(T)n+B_3(T)n^{2} \right] 
+  \end{equation}
+  即气体压强对密度的展开.这里$B_2,B_3 \cdots$被称为第二,第三...维里系数.
+
+  写出系统的巨配分函数
+  \begin{equation}
+    \Xi (\mu,T,V)=\sum_{N=0}^{\infty} e^{\beta \mu N} Z(N,T,V)=\sum_{N=0}^{\infty} \frac{1}{N!} \left( \frac{e^{\beta\mu}}{\lambda^{3}} \right) ^{N} S_{N}
+  \end{equation}
+  这里$\lambda$是热波长,为$\lambda=\sqrt{\dfrac{mT}{2 \pi \hbar^{2}}}$.而$S_{N}=\int e^{-U /T}  \prod_{i}^{ } \mathrm{d}q_{i}$. 令 $f_{ij}= f(q_i -q_{j})=(1-e ^{- U_{ij} /T})$\footnote{这里省略适量符号,$q_{i}$即$\vec{q_{i}}$},式子改写成
+  \[S_{N}=\int \prod_{i=1}^{N} \mathrm{d}  q_i  \prod_{i<j}^{} (1+f_{ij})\]
+  现在把$S_{N}$内的积分展开:
+  \[S_{N}=\int \prod_{i=1}^{N} \mathrm{d}  q_{i} \left( 1+ \sum_{i<j} f_{ij} +\sum_{i<j,k<l} f_{ij}f_{kl}+ \cdots  \right) \]
+  再把它们作为一个个集团展开,比如:
+  \begin{itemize}
+      \item 单个粒子$b_1=\int \mathrm{d} q =V$.
+      \item 两个粒子$b_2=\int \mathrm{d} q_1 \mathrm{d} q_2 f(q_1-q_2)$
+      \item 三个粒子
+        \begin{align*}
+         b_3=&\int \mathrm{d} q_1 \mathrm{d} q_2 \mathrm{d} q_3  [f(q_1-q_2)f(q_2-q_3)+\\ &f(q_2-q_3)f(q_3-q_1)+f(q_3-q_1)f(q_1-q_2)+f(q_1-q_2)f(q_2-q_3)f(q_3-q_1) ]
+        \end{align*}
+
+  \end{itemize}
+  等等等等.
+
+  包含$N$个粒子的气体可以分解成$n_1$个1粒子集团, $n_2$个2粒子集团, $n_3$个3粒子集团... 于是 
+  \[S_{N}=\sum_{\left\{ n_{i} \right\} }\prod_{i}^{} b_{i}^{n_{i}}W(\left\{ n_{i} \right\} )\] 
+  这里$W(\left\{ n_{i} \right\} )$是把$N$粒子气体打成$\left\{ n_{i} \right\} $集团的种数.不难得到(相同粒子数集团可交换,集团内粒子可交换)
+  \[W(\left\{ n_{i} \right\} )=\frac{N!}{\prod_{i}^{} n_{i}!(i!)^{n_{i}}  }\]
+
+  回到巨配分函数,它等于
+  \[\Xi=\sum_{N=0}^{\infty}\frac{1}{N!}\left( \frac{e^{\beta \mu}}{\lambda^{3}} \right) ^{N}\sum_{\left\{ n_{i} \right\} } \prod_{i}^{} b_{i}^{n_{i}} \frac{N!}{\prod_{i}^{} n_{i}! (i!)^{n_{i}}}\]
+  这看起来十分复杂,因为它还有限制条件$\sum i n_{i}=N$. 但幸运的是,巨配分函数还需要对$N$求和, 在去掉限制条件的同时,还可以把对$N$的求和去掉\footnote{其实这个限制条件的存在就是一个$\delta$函数}. 方程变为
+  \begin{align*}
+   \Xi= &\sum_{\left\{ n_{i} \right\} }\left( \frac{e^{\beta \mu}}{\lambda^{3}} \right) ^{\sum i n_{i}} \prod_{i}^{} \frac{b_{i}^{n_{i}}}{n_{i}! (i!)^{n_{i}} }\\\
+   &=\sum_{\left\{ n_{i} \right\} } \prod_{i}^{} \frac{1}{n_{i}!}\left( \frac{e^{\beta \mu i}b_{i}}{\lambda ^{3i}i!} \right) ^{n_{i}}\\
+   &=\prod_{i}^{} \sum_{\left\{ n_{i} \right\} } \frac{1}{n_{i}!}\left( \frac{e^{\beta \mu i}b_{i}}{\lambda ^{3i}i!} \right) ^{n_{i}}\\
+   &=\exp(\sum_{i=1}^{\infty} \left( \frac{e^{\beta \mu}}{\lambda^{3}} \right) \frac{b_{i}}{i!})
+  \end{align*}
+  
+  
+
+
+
+\subsection{范德瓦尔斯公式}
+  范德瓦尔斯气体作为一个内插公式来定性的描述液体和气体之间的过渡.再两种极限下应该给出正确的结果.对稀薄气体,它应理想化为理想气体.随着密度的增加,气体逐渐趋近于液体,这时它应该考虑到物质所具有的有限压缩率.
+
+  注意到$U_{12}$只是原子间距$r$的函数,在\eqref{eq:5.6}的积分中我们可以把$\mathrm{d} V$写成$\mathrm{d}  V= 4\pi r^{2}\mathrm{d} r$.把积分区域写成两部分,即
+  \[B(T)=2\pi \int_{0}^{2r_0}(1-e^{-U_{12} / T})r^{2}\mathrm{d} r+2\pi\int_{2r_0}^{\infty} (1-e^{-U_{12} / T})r^{2} \mathrm{d}r\]
+  在$0 \sim  2r_0$之间时,势能一般非常大.因此在第一个积分中,$\exp(- U_{12} /T)$项同1相比可以忽略.于是这一部分积分等于常量:
+  \[b=\frac{16}{3}\pi r_0^{3}\]
+  在第二个积分中,一般有$U_{12} \ll T$,于是把指数项展开到第一阶非零项,第二部分的积分变成:
+  \[-\frac{2\pi}{T} \int_{2r_0}^{\infty} \left\vert U_{12} \right\vert r^{2} \mathrm{d}r=-\frac{a}{T}\]
+  这里$a$是正的常数.因此有
+  \[B=b-\frac{a}{T}\]
+  代入自由能的表达式,有
+  \[F=F_{id}+\frac{N^{2}}{V}(bT-a)\]
+  这个形式的自由能并不满足物理情景,在$V$很小时并没有显示出气体不能被无限压缩. 把理想气体的自由能表达式代入上式.
+  \[F=Nf(T)-NT \ln \frac{e}{N}-NT\left( \ln V-\frac{Nb}{V} \right) -\frac{N^{2}a}{V}\]
+  再利用一次气体稀薄的性质,分子间距比分子线度大得多.可以说,气体的体积$V$在任何情形下都比$Nb$大得多.于是,
+  \[\ln (V-Nb)\approx \ln V - \frac{Nb}{V}\]
+  于是把自由能写成:
+  \begin{equation}
+    F=Nf(T)-NT \ln \frac{e}{N}(V-Nb)-\frac{N^{2}a}{V}=F_{id}-NT\ln(1-\frac{nb}{V})-\frac{N^{2}a}{V}
+  \end{equation}
+  这样的情形下, 这个公式满足气体不能无限压缩的性质,因为在$V<Nb$时,对数的宗量会变成负数.
+
+  得到了自由能,就可以求出物态方程
+  \begin{equation}
+    P=-\dfrac{\partial F}{\partial V}=\frac{NT}{V-Nb}-\frac{N^{2}a}{V^{2}}
+  \end{equation}
+  或写成
+  \begin{equation}
+    \left( P+\frac{N^{2}a}{V^{2}} \right) (V-Nb)=NT
+  \end{equation}
+  这个就是\emph{范德瓦尔斯方程}. 但是,它只是满足要求的无数内插公式中的一个, 同时, 范德瓦尔斯公式也是最简单的和最方便的公式.
+  
+  继续可以求出范德瓦尔斯气体的熵:
+  \begin{equation}
+    S=S_{id}+N \ln(1-\frac{Nb}{V})
+  \end{equation}
+  然后继续求得能量$E=F+TS$:
+  \begin{equation}
+    E=E_{id}-\frac{N^{2}a}{V}
+  \end{equation}
+  不难看出,范德瓦尔斯气体的等容热容和理想气体的一致,但等压热容不再和理想气体一致:
+  \begin{equation}
+    C_{p}-C_{v}=-T \frac{ \left( \dfrac{\partial P}{\partial T} \right) ^{2}_{V}}{\left( \dfrac{\partial P}{\partial V} \right) _{T}}=\dfrac{N}{1-\frac{2Na}{TV^{3}}(V-Nb)^{2}}
+  \end{equation}
+  范德瓦尔斯气体的绝热方程为
+  \begin{equation}
+    P(V-Nb)^{\gamma}=\operatorname{const}
+  \end{equation}
+  就是把理想气体中的$V$换成了$(V-Nb)$. 
+
+
+
+  
